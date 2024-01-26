@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
+import { injectIntl } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
-import { Image } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
-import { intlShape, injectIntl, FormattedMessage } from '@edx/frontend-platform/i18n';
+import messages from './studio-footer/messages';
 
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
