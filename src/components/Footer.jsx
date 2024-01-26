@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { injectIntl } from '@edx/frontend-platform/i18n';
+import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
@@ -32,7 +32,7 @@ class SiteFooter extends React.Component {
   }
 
   render() {
-    const { supportedLanguages, onLanguageSelected, logo, intl } = this.props;
+    const { supportedLanguages, onLanguageSelected, intl } = this.props;
     const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
     const config = getConfig();
 
@@ -67,7 +67,6 @@ SiteFooter.contextType = AppContext;
 
 SiteFooter.propTypes = {
   intl: intlShape.isRequired,
-  logo: PropTypes.string,
   onLanguageSelected: PropTypes.func,
   supportedLanguages: PropTypes.arrayOf(
     PropTypes.shape({
@@ -78,7 +77,6 @@ SiteFooter.propTypes = {
 };
 
 SiteFooter.defaultProps = {
-  logo: undefined,
   onLanguageSelected: undefined,
   supportedLanguages: [],
 };
