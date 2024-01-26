@@ -6,14 +6,12 @@ import { ensureConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
 import { Image } from '@edx/paragon';
 import { getConfig } from '@edx/frontend-platform';
+import { intlShape, injectIntl, FormattedMessage } from '@edx/frontend-platform/i18n';
 
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
 
-ensureConfig([
-  'LMS_BASE_URL',
-  'LOGO_TRADEMARK_URL',
-], 'Footer component');
+ensureConfig(['LMS_BASE_URL', 'LOGO_TRADEMARK_URL', 'PRIVACY_POLICY_URL'], 'Footer component');
 
 const EVENT_NAMES = {
   FOOTER_LINK: 'edx.bi.footer.link',
@@ -36,12 +34,7 @@ class SiteFooter extends React.Component {
   }
 
   render() {
-    const {
-      supportedLanguages,
-      onLanguageSelected,
-      logo,
-      intl,
-    } = this.props;
+    const { supportedLanguages, onLanguageSelected, logo, intl } = this.props;
     const showLanguageSelector = supportedLanguages.length > 0 && onLanguageSelected;
     const config = getConfig();
 
@@ -53,32 +46,18 @@ class SiteFooter extends React.Component {
               <ul className="logo-list">
                 <li>{intl.formatMessage(messages['footer.poweredby.text'])}</li>
                 <li>
-                  <a href="https://docs.tutor.overhang.io" rel="noreferrer" target="_blank">
-                    <Image
-                      src={`${config.LMS_BASE_URL}/static/indigo/images/tutor-logo.png`}
-                      alt={intl.formatMessage(messages['footer.tutorlogo.altText'])}
-                      width="57"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://open.edx.org" rel="noreferrer" target="_blank">
-                    <Image
-                      src={logo || `${config.LMS_BASE_URL}/static/indigo/images/openedx-logo.png`}
-                      alt={intl.formatMessage(messages['footer.logo.altText'])}
-                      width="79"
-                    />
+                  <a href={config.PRIVACY_POLICY_URL} rel="noreferrer" target="_blank">
+                    {intl.formatMessage(messages.privacyPolicyLinkLabel)}
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <span className="copyright-site">{intl.formatMessage(messages['footer.copyright.text'])}</span>
+          <span className="copyright-site">
+            {intl.formatMessage(messages['footer.copyright.text'])}
+          </span>
           {showLanguageSelector && (
-            <LanguageSelector
-              options={supportedLanguages}
-              onSubmit={onLanguageSelected}
-            />
+            <LanguageSelector options={supportedLanguages} onSubmit={onLanguageSelected} />
           )}
         </footer>
       </div>
@@ -92,10 +71,12 @@ SiteFooter.propTypes = {
   intl: intlShape.isRequired,
   logo: PropTypes.string,
   onLanguageSelected: PropTypes.func,
-  supportedLanguages: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-  })),
+  supportedLanguages: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 SiteFooter.defaultProps = {
