@@ -151,6 +151,11 @@ const messages = defineMessages({
     defaultMessage: 'Runs on Tutor',
     description: 'alt text for the footer tutor logo',
   },
+  'footer.privacyPolicyLinkLabel.text': {
+    id: 'authoring.footer.privacyPolicy.link.label',
+    defaultMessage: 'Privacy Policy',
+    description: 'Label for button that links to the privacy policy page',
+  },
   'footer.logo.ariaLabel': {
     id: 'footer.logo.ariaLabel',
     defaultMessage: 'edX Home',

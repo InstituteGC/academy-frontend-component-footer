@@ -5,7 +5,6 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { ensureConfig } from '@edx/frontend-platform/config';
 import { AppContext } from '@edx/frontend-platform/react';
 import { getConfig } from '@edx/frontend-platform';
-import messages from './studio-footer/messages';
 
 import messages from './Footer.messages';
 import LanguageSelector from './LanguageSelector';
@@ -46,7 +45,7 @@ class SiteFooter extends React.Component {
                 <li>{intl.formatMessage(messages['footer.poweredby.text'])}</li>
                 <li>
                   <a href={config.PRIVACY_POLICY_URL} rel="noreferrer" target="_blank">
-                    {intl.formatMessage(messages.privacyPolicyLinkLabel)}
+                    {intl.formatMessage(messages['footer.privacyPolicyLinkLabel.text'])}
                   </a>
                 </li>
               </ul>
