@@ -44,7 +44,7 @@ class SiteFooter extends React.Component {
               <ul className="logo-list">
                 <li>{intl.formatMessage(messages['footer.poweredby.text'])}</li>
                 <li>
-                  <a href={config.PRIVACY_POLICY_URL} rel="noreferrer" target="_blank">
+                  <a href={`${config.LMS_BASE_URL}/privacy`} rel="noreferrer" target="_blank">
                     {intl.formatMessage(messages['footer.privacyPolicyLinkLabel.text'])}
                   </a>
                 </li>
