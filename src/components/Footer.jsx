@@ -42,7 +42,6 @@ class SiteFooter extends React.Component {
           <div className="footer-top">
             <div className="powered-area">
               <ul className="logo-list">
-                <li>{intl.formatMessage(messages['footer.poweredby.text'])}</li>
                 <li>
                   <a href={`${config.LMS_BASE_URL}/privacy`} rel="noreferrer" target="_blank">
                     {intl.formatMessage(messages['footer.privacyPolicyLinkLabel.text'])}
@@ -51,9 +50,6 @@ class SiteFooter extends React.Component {
               </ul>
             </div>
           </div>
-          <span className="copyright-site">
-            {intl.formatMessage(messages['footer.copyright.text'])}
-          </span>
           {showLanguageSelector && (
             <LanguageSelector options={supportedLanguages} onSubmit={onLanguageSelected} />
           )}
